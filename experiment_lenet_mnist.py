@@ -26,7 +26,9 @@ branchyNet.training()
 
 from datasets import mnist
 x_train, y_train, x_test, y_test = mnist.get_data()
-
+print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
+x_train, y_train, x_test, y_test = x_train[:6000], y_train[:6000], x_test[:1000], y_test[:1000]
+print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 
 # Settings
 

@@ -1,5 +1,5 @@
 import matplotlib
-matplotlib.use("agg")
+
 import matplotlib.pyplot as plt
 import numpy as np
 import utils
@@ -56,7 +56,7 @@ def plot_tradeoff(ps,accs,diffs,baseacc,basediff):
     ax2 = ax.twinx()
     l = ax2.plot(ps,diffs,'-r',label='Time',linewidth=5.0)
     lns += l
-    l = ax2.plot(ps,basediffs,'--r',label='Baseline Time',linewidth=5.0)
+    l = ax2.plotree/branchynet/B_net(ps,basediffs,'--r',label='Baseline Time',linewidth=5.0)
     lns += l
     ax2.set_ylabel('Runtime (s)')
 
@@ -84,7 +84,7 @@ def plot_roc(ps,accs,diffs,baseacc,basediff):
 
     keep_idxs = np.array(keep_idxs)
 
-    plt.plot(diffs, accs, linewidth=4,label='Our Method')
+    plt.plMatplotlibot(diffs, accs, linewidth=4,label='Our Method')
     plt.plot(basediff, baseacc, 'D', linewidth=4,label='Baseline')
     plt.xlabel('Runtime (s)')
     plt.ylabel('Overall Accuracy')
@@ -94,8 +94,9 @@ def plot_roc(ps,accs,diffs,baseacc,basediff):
 def plot_line_tradeoff(accs, diffs, ps, exits, baseacc, basediff, orig_label='Baseline', title=None, our_label='Our Method',
                        xlabel='Runtime (s)', ylabel='Classification Accuracy', all_samples=False, knee_idx=None,
                        xlim=None, ylim=None, inc_amt=-0.0005, output_path=None):
+    
     matplotlib.rcParams.update({'axes.labelsize': 10,
-    'text.fontsize': 18,
+    #'text.fontsize': 18,
     'legend.fontsize': 15,
     'xtick.labelsize': 13,
     'ytick.labelsize': 13,
@@ -171,7 +172,7 @@ def plot_layer_entropy(leakyNet, x):
     
 def plot_exits(g_exits, g_accs, g_exits2, g_accs2, i=0, labels=['Joint','Separate']):
     matplotlib.rcParams.update({'axes.labelsize': 10,
-    'text.fontsize': 18,
+    #'text.fontsize': 18.0,
     'legend.fontsize': 15,
     'xtick.labelsize': 13,
     'ytick.labelsize': 13,
