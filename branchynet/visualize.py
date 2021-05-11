@@ -1,9 +1,5 @@
 import matplotlib
-<<<<<<< HEAD
-
-=======
 #matplotlib.use("agg")
->>>>>>> dc710d2c8d19f51660c07b9138b2db5674a45923
 import matplotlib.pyplot as plt
 import numpy as np
 import utils
