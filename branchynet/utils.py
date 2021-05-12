@@ -225,7 +225,7 @@ def train(branchyNet,x_train,y_train,batchsize=10000,num_epoch=20,main=False):
         indexes = np.random.permutation(datasize)
         import time
         print(time.time())
-        print(indexes)
+        #print(indexes)
         sum_loss = 0
         num = 0
 

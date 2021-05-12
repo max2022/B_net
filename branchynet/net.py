@@ -117,7 +117,19 @@ class BranchyNet:
         self.gpu = False
         self.main.to_cpu()
         [model.to_cpu() for model in self.models]
-                    
+    
+    #pend add
+    def saveXToFile(self, data):
+        a_file = open("data/x_data.txt", "a+")
+        np.savetxt(a_file, data.reshape(data.shape[0], -1))
+        a_file.close()
+    
+    def saveYToFile(self, y):
+        a_file = open("data/y_data.txt", "a+")
+        np.savetxt(a_file, np.array([y]))
+        a_file.close()
+
+    
     def test(self,x,t=None):        
         numexits = []
         accuracies = []
@@ -129,12 +141,25 @@ class BranchyNet:
         numsamples = x.data.shape[0]
         
         totaltime = 0
+        
+        #add peng
+        find_exit_num = True
         for i,model in enumerate(self.models):
+            # modified by peng
             if remainingXVar is None or remainingTVar is None:
+                if find_exit_num == True:
+                    find_exit_num = False
+                    self.saveXToFile(x.data)
+                    self.saveYToFile(str(i-1))
+                    print("test finished")
                 numexits.append(0)
                 accuracies.append(0)
                 continue
-            
+            if i == len(self.models)-1:
+                self.saveXToFile(x.data)
+                self.saveYToFile(str(i))
+                print("test finished")
+                
             # if self.gpu:
             #     # Faster on GPU, less transfer
             #     smh = model.test(remainingXVar,None)
@@ -262,6 +287,7 @@ class BranchyNet:
         
         totaltime = 0
         for i,model in enumerate(self.models):
+            print("run", numexits)
             if isinstance(remainingXVar,types.NoneType) or isinstance(remainingTVar,types.NoneType):
                 break
             
