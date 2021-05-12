@@ -150,14 +150,14 @@ class BranchyNet:
                 if find_exit_num == True:
                     find_exit_num = False
                     self.saveXToFile(x.data)
-                    self.saveYToFile(str(i-1))
+                    self.saveYToFile(i-1)
                     print("test finished")
                 numexits.append(0)
                 accuracies.append(0)
                 continue
             if i == len(self.models)-1:
                 self.saveXToFile(x.data)
-                self.saveYToFile(str(i))
+                self.saveYToFile(i)
                 print("test finished")
                 
             # if self.gpu:
