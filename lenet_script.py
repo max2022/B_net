@@ -49,8 +49,13 @@ with open("_models/lenet_mnist.bn", "rb") as f:
     branchyNet = dill.load(f)
 
 branchyNet.testing()
-branchyNet.verbose = False
+branchyNet.verbose = True
 thresholds = [0.025]
 if cuda.available:
     branchyNet.to_gpu()
 g_ts, g_accs, g_diffs, g_exits = utils.screen_branchy(branchyNet, x_test, y_test, thresholds, batchsize=TEST_BATCHSIZE, verbose=True)
+
+print(g_accs)
+print(g_diffs)
+print(g_ts)
+print(g_exits)
